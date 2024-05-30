@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var selectedPage: Int = 1
     var body: some View {
-        HStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            mainContent
         }
-        .padding()
+    }
+    
+    var mainContent: some View {
+        VStack(spacing: 0) {
+            appViews
+            TabBar(selected: $selectedPage)
+        }
+    }
+    
+    @ViewBuilder
+    var appViews: some View {
+        switch selectedPage {
+        case 0:
+            EmptyView()
+        case 1:
+            EmptyView()
+        case 2:
+            EmptyView()
+        default:
+            EmptyView()
+        }
     }
 }
 
