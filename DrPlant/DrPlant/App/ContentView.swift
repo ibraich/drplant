@@ -28,7 +28,7 @@ struct ContentView: View {
         case 0:
             EmptyView()
         case 1:
-            EmptyView()
+            HomeView()
         case 2:
             EmptyView()
         default:
