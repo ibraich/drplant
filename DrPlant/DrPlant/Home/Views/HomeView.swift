@@ -6,20 +6,27 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct HomeView: View {
+    @State private var photosPickerItem: PhotosPickerItem?
+    @State private var mainImage: UIImage?
+    @State private var isShowingCamera = false
+    
     var body: some View {
         VStack {
             Text("DrPlant")
             Spacer()
-            Image("homeimage")
+            Image(uiImage: mainImage ?? UIImage(imageLiteralResourceName: "homeimage"))
+                .resizable()
+                .frame(width: 343,
+                       height: 360)
             HStack {
                 VStack {
-                    Button(action: {
-                        
-                    }) {
+                    PhotosPicker(selection: $photosPickerItem, matching: .images) {
                         Image(systemName: "arrow.up")
-                            .frame(width: 119, height: 46)
+                            .frame(width: 119,
+                                   height: 46)
                             .background(Color.black)
                             .cornerRadius(6)
                             .foregroundColor(Color.white)
@@ -30,10 +37,11 @@ struct HomeView: View {
                 
                 VStack {
                     Button(action: {
-                        
+                        isShowingCamera = true
                     }) {
                         Image(systemName: "camera")
-                            .frame(width: 119, height: 46)
+                            .frame(width: 119,
+                                   height: 46)
                             .background(Color.black)
                             .cornerRadius(6)
                             .foregroundColor(Color.white)
@@ -43,6 +51,10 @@ struct HomeView: View {
                 .padding(20)
             }
             Spacer()
+        }.fullScreenCover(isPresented: $isShowingCamera) {
+            CameraPickerView() { image in
+                    //
+            }
         }
     }
 }

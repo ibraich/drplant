@@ -13,6 +13,7 @@
 		456435EA2C09087E00E84B62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456435E92C09087E00E84B62 /* Assets.xcassets */; };
 		456435ED2C09087E00E84B62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456435EC2C09087E00E84B62 /* Preview Assets.xcassets */; };
 		456435FE2C09118F00E84B62 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456435FD2C09118F00E84B62 /* TabBar.swift */; };
+		45E844C22C14A2F20054A53B /* CameraPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E844C12C14A2F20054A53B /* CameraPickerView.swift */; };
 		45FB74CA2C0AEFB200BB7A1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB74C92C0AEFB200BB7A1F /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		456435E92C09087E00E84B62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		456435EC2C09087E00E84B62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		456435FD2C09118F00E84B62 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		45E844C12C14A2F20054A53B /* CameraPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPickerView.swift; sourceTree = "<group>"; };
 		45FB74C92C0AEFB200BB7A1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 		456435F82C090E9100E84B62 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				45E844C02C14A2AF0054A53B /* CameraPickerView */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -146,6 +149,14 @@
 				456435FD2C09118F00E84B62 /* TabBar.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		45E844C02C14A2AF0054A53B /* CameraPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				45E844C12C14A2F20054A53B /* CameraPickerView.swift */,
+			);
+			path = CameraPickerView;
 			sourceTree = "<group>";
 		};
 		45FB74C72C0AEF8E00BB7A1F /* Views */ = {
@@ -239,6 +250,7 @@
 				456435E82C09087B00E84B62 /* ContentView.swift in Sources */,
 				09FFE0612C0C99D900E92871 /* DiagnoseView.swift in Sources */,
 				456435E62C09087B00E84B62 /* DrPlantApp.swift in Sources */,
+				45E844C22C14A2F20054A53B /* CameraPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
