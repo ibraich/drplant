@@ -120,7 +120,6 @@ struct HomeView: View {
                 }
 
                 if let data = data {
-                    print("Raw Response Data: \(String(describing: String(data: data, encoding: .utf8)))")
                     do {
                         let decoder = JSONDecoder()
                         let response = try decoder.decode(PlantResponse.self, from: data)
@@ -134,7 +133,6 @@ struct HomeView: View {
                                 )
                             }
 
-                            // Print all suggestions
                             self.printSuggestions()
                         }
                     } catch {
@@ -146,7 +144,6 @@ struct HomeView: View {
             task.resume()
         }
 
-        // Function to print all suggestions
         func printSuggestions() {
             for suggestion in suggestions {
                 print("Plant Name: \(suggestion.name)")
