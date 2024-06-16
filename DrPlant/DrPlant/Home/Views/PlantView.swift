@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlantView: View {
+
+    
     let mainImage = "homeimage"
     let images = ["homeimage", "homeimage", "homeimage"]
     let information = [["Shiitake",

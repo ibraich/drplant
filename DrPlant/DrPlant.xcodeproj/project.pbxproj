@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		095220842C1F3B4700D6DBAB /* PlantResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095220832C1F3B4700D6DBAB /* PlantResponse.swift */; };
+		095220902C1F4C4300D6DBAB /* Response.json in Resources */ = {isa = PBXBuildFile; fileRef = 0952208F2C1F4C4200D6DBAB /* Response.json */; };
+		095220942C1F5ED500D6DBAB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095220932C1F5ED500D6DBAB /* LoadingView.swift */; };
 		09FFE0612C0C99D900E92871 /* DiagnoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FFE0602C0C99D900E92871 /* DiagnoseView.swift */; };
 		456435E62C09087B00E84B62 /* DrPlantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456435E52C09087B00E84B62 /* DrPlantApp.swift */; };
 		456435E82C09087B00E84B62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456435E72C09087B00E84B62 /* ContentView.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		095220832C1F3B4700D6DBAB /* PlantResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantResponse.swift; sourceTree = "<group>"; };
+		0952208F2C1F4C4200D6DBAB /* Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Response.json; sourceTree = "<group>"; };
+		095220932C1F5ED500D6DBAB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09FFE0602C0C99D900E92871 /* DiagnoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnoseView.swift; sourceTree = "<group>"; };
 		456435E22C09087B00E84B62 /* DrPlant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrPlant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		456435E52C09087B00E84B62 /* DrPlantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrPlantApp.swift; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 		456435FA2C090EB600E84B62 /* Recources */ = {
 			isa = PBXGroup;
 			children = (
+				0952208F2C1F4C4200D6DBAB /* Response.json */,
 				456435E92C09087E00E84B62 /* Assets.xcassets */,
 			);
 			path = Recources;
@@ -167,6 +174,8 @@
 				45FB74C92C0AEFB200BB7A1F /* HomeView.swift */,
 				09FFE0602C0C99D900E92871 /* DiagnoseView.swift */,
 				4571DE292C17493100CC977A /* PlantView.swift */,
+				095220832C1F3B4700D6DBAB /* PlantResponse.swift */,
+				095220932C1F5ED500D6DBAB /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,7 +213,6 @@
 		456435DA2C09087B00E84B62 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
@@ -236,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				095220902C1F4C4300D6DBAB /* Response.json in Resources */,
 				456435ED2C09087E00E84B62 /* Preview Assets.xcassets in Resources */,
 				456435EA2C09087E00E84B62 /* Assets.xcassets in Resources */,
 			);
@@ -251,7 +260,9 @@
 				456435FE2C09118F00E84B62 /* TabBar.swift in Sources */,
 				4571DE2A2C17493100CC977A /* PlantView.swift in Sources */,
 				45FB74CA2C0AEFB200BB7A1F /* HomeView.swift in Sources */,
+				095220942C1F5ED500D6DBAB /* LoadingView.swift in Sources */,
 				456435E82C09087B00E84B62 /* ContentView.swift in Sources */,
+				095220842C1F3B4700D6DBAB /* PlantResponse.swift in Sources */,
 				09FFE0612C0C99D900E92871 /* DiagnoseView.swift in Sources */,
 				456435E62C09087B00E84B62 /* DrPlantApp.swift in Sources */,
 				45E844C22C14A2F20054A53B /* CameraPickerView.swift in Sources */,

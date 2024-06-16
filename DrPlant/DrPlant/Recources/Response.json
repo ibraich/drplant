@@ -1,0 +1,68 @@
+["access_token": dHbKH1KSI8kjCLw, "sla_compliant_client": 1, "status": COMPLETED, "result": {
+    classification =     {
+        suggestions =         (
+                        {
+                details =                 {
+                    "entity_id" = 79a3cc388cd9a11a;
+                    language = en;
+                };
+                id = 79a3cc388cd9a11a;
+                name = "Delosperma cooperi";
+                probability = "0.8754";
+                "similar_images" =                 (
+                                        {
+                        id = b2b2d513676ce85f04f5bd71cde86800098afe27;
+                        similarity = "0.782";
+                        url = "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/b2b/2d513676ce85f04f5bd71cde86800098afe27.jpeg";
+                        "url_small" = "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/b2b/2d513676ce85f04f5bd71cde86800098afe27.small.jpeg";
+                    },
+                                        {
+                        id = 9eff8e526d493e49eba784f6e35c2ee8ed1ce968;
+                        similarity = "0.699";
+                        url = "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/9ef/f8e526d493e49eba784f6e35c2ee8ed1ce968.jpeg";
+                        "url_small" = "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/9ef/f8e526d493e49eba784f6e35c2ee8ed1ce968.small.jpeg";
+                    }
+                );
+            },
+                        {
+                details =                 {
+                    "entity_id" = d702fa5707602dd2;
+                    language = en;
+                };
+                id = d702fa5707602dd2;
+                name = Lampranthus;
+                probability = "0.1246";
+                "similar_images" =                 (
+                                        {
+                        id = 905f28938875ad8a76823571b8e80b3e90077166;
+                        similarity = "0.706";
+                        url = "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/905/f28938875ad8a76823571b8e80b3e90077166.jpeg";
+                        "url_small" = "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/905/f28938875ad8a76823571b8e80b3e90077166.small.jpeg";
+                    },
+                                        {
+                        citation = "Jeremy Gilmore";
+                        id = 9bf92d8280410d78b7c7be93245eb9b386546029;
+                        "license_name" = "CC BY 4.0";
+                        "license_url" = "https://creativecommons.org/licenses/by/4.0/";
+                        similarity = "0.611";
+                        url = "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/9bf/92d8280410d78b7c7be93245eb9b386546029.jpeg";
+                        "url_small" = "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/9bf/92d8280410d78b7c7be93245eb9b386546029.small.jpeg";
+                    }
+                );
+            }
+        );
+    };
+    "is_plant" =     {
+        binary = 1;
+        probability = "0.99999905";
+        threshold = "0.5";
+    };
+}, "model_version": plant_id:3.7.0, "input": {
+    datetime = "2024-06-14T14:39:47.120661+00:00";
+    images =     (
+        "https://plant.id/media/imgs/f68fd5f747184295b43f85b840ce3f49.jpg"
+    );
+    latitude = "49.207";
+    longitude = "16.608";
+    "similar_images" = 1;
+}, "custom_id": <null>, "created": 1718375987.120661, "completed": 1718375988.016989, "sla_compliant_system": 1]
