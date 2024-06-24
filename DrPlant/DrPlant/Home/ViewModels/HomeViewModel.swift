@@ -14,6 +14,7 @@ class HomeViewModel: ObservableObject {
     
     @Published var images = [""]
     @Published var similar_images = true
+    @Published var model: IdentificationModel?
     
     var requestManager: RequestManager
     
@@ -28,6 +29,7 @@ class HomeViewModel: ObservableObject {
             case .success(let result):
                 DispatchQueue.main.async {
                     self.isLoading = false
+                    self.model = result
                 }
                 print(result)
             case .failure(let error):
