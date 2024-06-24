@@ -33,18 +33,22 @@ struct HomeView: View {
                         Text("Upload")
                     }
                     .task(id: photosPickerItem) {
-                        
+                        do {
                             
-                        if let image = try? await photosPickerItem?.loadTransferable(type: Image.self),
-                                   let uiImage = image.asUIImage() {
-                                    isPhotoPicked = true
-                                    homeViewModel.images = ImageConvertor.convertImageToBase64Strings(image: uiImage)
-                                    homeViewModel.uploadButtonTapped()
-//                                    uploadImage(uiImage: uiImage)
-//                                    parsePlantResponse()
-                                }
+                            if let image = try await photosPickerItem?.getImage(),
+                               case let.success(uiImage) = image {
+                                print("")
+                                isPhotoPicked = true
+                                homeViewModel.images = ImageConvertor.convertImageToBase64Strings(image: uiImage)
+                                homeViewModel.uploadButtonTapped()
+                                //                                    uploadImage(uiImage: uiImage)
+                                //                                    parsePlantResponse()
+                            }
                             
-                        
+                            
+                        } catch {
+                            print("Error loading transferable image: \(error.localizedDescription)")
+                        }
                     }
                     .padding(20)
                     
@@ -159,4 +163,19 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
+}
+
+extension PhotosPickerItem{
+    func getImage() async throws -> Result<UIImage, Error>{
+        let data = try await self.loadTransferable(type: Data.self)
+        guard let data = data, let image = UIImage(data: data) else{
+            return .failure(AppError.noImageFound)
+        }
+        return .success(image)
+    }
+    
+}
+
+enum AppError: LocalizedError{
+    case noImageFound
 }
