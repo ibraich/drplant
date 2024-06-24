@@ -4,15 +4,15 @@ import PhotosUI
 struct HomeView: View {
     @State private var photosPickerItem: PhotosPickerItem?
     @State private var mainImage: UIImage?
-    @State private var selectedImage: UIImage? = nil
+    @State private var selectedImage: Image? = nil
     @State private var isShowingCamera = false
     @State private var isPhotoPicked = false
     @State private var plantName: String = ""
     @State private var probability: Double = 0.0
     @State private var similarImages: [String] = []
     @State private var suggestions: [PlantSuggestion] = []
-
-
+    var homeViewModel = HomeViewModel(requestManager: RequestManager())
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -32,18 +32,19 @@ struct HomeView: View {
                         }
                         Text("Upload")
                     }
-                    .onChange(of: photosPickerItem) { newItem in
-                        if let newItem = newItem {
-                            Task {
-                                if let data = try? await newItem.loadTransferable(type: Data.self),
-                                   let uiImage = UIImage(data: data) {
-                                    selectedImage = uiImage
+                    .task(id: photosPickerItem) {
+                        
+                            
+                        if let image = try? await photosPickerItem?.loadTransferable(type: Image.self),
+                                   let uiImage = image.asUIImage() {
                                     isPhotoPicked = true
-                                    uploadImage(uiImage: uiImage)
-                                    //parsePlantResponse()
+                                    homeViewModel.images = ImageConvertor.convertImageToBase64Strings(image: uiImage)
+                                    homeViewModel.uploadButtonTapped()
+//                                    uploadImage(uiImage: uiImage)
+//                                    parsePlantResponse()
                                 }
-                            }
-                        }
+                            
+                        
                     }
                     .padding(20)
                     
@@ -89,7 +90,7 @@ struct HomeView: View {
                 return
             }
 
-            let apiKey = "vv5xvG5VqtMlSqBRRV7F0lSIfXYOwu54l5Zl2Hno4nDY2NVus5"
+            let apiKey = "xCW2ZXhZgCLbyJQQJAgqsOWlGvtB9zWBy5fij72TRJKJMbxT5n"
             let url = URL(string: "https://plant.id/api/v3/identification")!
 
             var request = URLRequest(url: url)
