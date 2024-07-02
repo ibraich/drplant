@@ -18,10 +18,14 @@ struct HealthAssessmentModel: Codable {
                 let name: String
                 let probability: Double
                 let similarImages: [SimilarImage]
+                let details: Details
+                
 
                 enum CodingKeys: String, CodingKey {
                     case name, probability
                     case similarImages = "similar_images"
+                    case details
+                    
                 }
 
                 struct SimilarImage: Codable {
@@ -33,6 +37,27 @@ struct HealthAssessmentModel: Codable {
                     enum CodingKeys: String, CodingKey {
                         case id, similarity, url
                         case urlSmall = "url_small"
+                    }
+                }
+                struct Details : Codable{
+                    let localName : String
+                    let description : String
+                    let treatment : Treatment
+                    
+                    enum CodingKeys: String, CodingKey {
+                        case localName = "local_name"
+                        case description
+                        case treatment
+                    }
+                    struct Treatment :Codable{
+                        let chemical : [String]?
+                        let biological : [String]?
+                        let prevention : [String]?
+                        
+                        enum CodingKeys: String, CodingKey {
+                            case chemical,biological,prevention
+                            
+                        }
                     }
                 }
             }

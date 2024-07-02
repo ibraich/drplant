@@ -18,7 +18,7 @@ extension EndPoints {
         case .recognition:
             return "https://plant.id/api/v3/identification"
         case .healthAssessment:
-            return "https://plant.id/api/v3/health_assessment"
+            return "https://plant.id/api/v3/health_assessment?details=local_name,description,treatment"
         }
     }
     
