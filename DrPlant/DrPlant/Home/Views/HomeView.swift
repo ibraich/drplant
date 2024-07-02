@@ -4,14 +4,14 @@ import PhotosUI
 struct HomeView: View {
     @State private var photosPickerItem: PhotosPickerItem?
     @State private var mainImage: UIImage?
+    @State private var uploadedImage: UIImage?
     @State private var selectedImage: Image? = nil
     @State private var isShowingCamera = false
     @State private var isPhotoPicked = false
     @State private var plantName: String = ""
     @State private var probability: Double = 0.0
     @State private var similarImages: [String] = []
-    @State private var suggestions: [PlantSuggestion] = []
-    var homeViewModel = HomeViewModel(requestManager: RequestManager())
+    @StateObject var homeViewModel = HomeViewModel(requestManager: RequestManager(),healthAssessmentRequestManager: HealthAssessmentRequestManager())
     
     var body: some View {
         NavigationView {
@@ -38,11 +38,9 @@ struct HomeView: View {
                             if let image = try await photosPickerItem?.getImage(),
                                case let.success(uiImage) = image {
                                 print("")
-                                isPhotoPicked = true
+                                mainImage = uiImage
                                 homeViewModel.images = ImageConvertor.convertImageToBase64Strings(image: uiImage)
                                 homeViewModel.uploadButtonTapped()
-                                //                                    uploadImage(uiImage: uiImage)
-                                //                                    parsePlantResponse()
                             }
                             
                             
@@ -67,7 +65,7 @@ struct HomeView: View {
                     .padding(20)
                     
                 }
-                NavigationLink(destination: PlantView().navigationBarBackButtonHidden(true), isActive: $isPhotoPicked) {
+                NavigationLink(destination: PlantView(mainImage: mainImage, model: homeViewModel.model,model_diagnose:homeViewModel.model_diagnose).navigationBarBackButtonHidden(true), isActive: $homeViewModel.showPlantView) {
                     EmptyView()
                 }
                 Spacer()

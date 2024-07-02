@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct PlantView: View {
 
     
-    let mainImage = "homeimage"
+    let mainImage: UIImage?
+    var model: IdentificationModel?
+    var model_diagnose: HealthAssessmentModel?
     let images = ["homeimage", "homeimage", "homeimage"]
     let information = [["Shiitake",
                         "East Asia",
@@ -33,10 +36,10 @@ struct PlantView: View {
                         .padding(.bottom, 5)
                     Spacer()
                     
-                    Image(mainImage)
+                    Image(uiImage: mainImage ?? UIImage(imageLiteralResourceName: "homeimage"))
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 150)
+                        .frame(width: 150, height: 150)
                         .cornerRadius(10)
                         .padding(.bottom, 10)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -44,13 +47,12 @@ struct PlantView: View {
                     // Image Carousel
                     ZStack(alignment: .center) {
                         ForEach(images.indices, id: \.self) { index in
-                            Image(images[index])
+                            KFImage(URL(string: model?.result.classification.suggestions[index].similarImages[0].url ?? ""))
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 150, height: 150)
                                 .cornerRadius(10)
                                 .padding(.horizontal, 10)
-                                .blur(radius: selectedImageIndex == index ? 0 : 10)
                                 .offset(x: CGFloat(index - selectedImageIndex) * 220)
                                 .animation(.easeInOut)
                         }
@@ -80,13 +82,13 @@ struct PlantView: View {
                     
                     HStack {
                         Spacer()
-                        Text(information[selectedImageIndex][0]).font(.title)
+                        Text(model?.result.classification.suggestions[0].name ?? "").font(.title)
                         Spacer()
                     }.padding(.bottom, 5)
                     
                     HStack {
                         Spacer()
-                        Text(information[selectedImageIndex][1]).font(.title3)
+//                        Text(model?.result.classification.suggestions[selectedImageIndex].probability ?? 0).font(.title3)
                         Spacer()
                     }.padding(.bottom, 5)
                     
@@ -96,15 +98,15 @@ struct PlantView: View {
                                 showNextButton.toggle()
                             } label: {
                                 Image(systemName: "hand.thumbsup.circle").resizable().frame(width: 70, height: 70)
-                                    .foregroundColor(Color.green)
-                            }.padding(.horizontal, 15)
+                                    .foregroundColor(Color.black)
+                            }.padding(15)
                             
                             Button {
                                 selectedImageIndex += 1
                             } label: {
                                 Image(systemName: "hand.thumbsdown.circle").resizable().frame(width: 70, height: 70)
-                                    .foregroundColor(Color.red)
-                            }.padding(.horizontal, 15)
+                                    .foregroundColor(Color.black)
+                            }.padding(15)
                         }
                     }
                     
@@ -116,7 +118,8 @@ struct PlantView: View {
                         .padding()
                         HStack {
                             VStack {
-                                NavigationLink(destination: PlantConditionView().navigationBarBackButtonHidden(true),
+                                NavigationLink(destination: PlantConditionView(model_diagnose: model_diagnose)
+                                    .navigationBarBackButtonHidden(true),
                                                label: {
                                     Image(systemName: "humidity")
                                         .frame(width: 119,
@@ -153,6 +156,6 @@ struct PlantView: View {
 
 struct plantView_Previews: PreviewProvider {
     static var previews: some View {
-        PlantView()
+        PlantView(mainImage: UIImage(imageLiteralResourceName: "homeimage"))
     }
 }
