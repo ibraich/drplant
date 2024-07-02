@@ -9,6 +9,7 @@ import Foundation
 
 enum EndPoints {
     case recognition(images: [String], similar_images: Bool)
+    case healthAssessment(images: [String], similar_images: Bool)
 }
 
 extension EndPoints {
@@ -16,12 +17,14 @@ extension EndPoints {
         switch self {
         case .recognition:
             return "https://plant.id/api/v3/identification"
+        case .healthAssessment:
+            return "https://plant.id/api/v3/health_assessment"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .recognition:
+        case .recognition, .healthAssessment:
             return .post
         }
     }
@@ -30,7 +33,11 @@ extension EndPoints {
         switch self {
         case .recognition(let images, let similar_images):
             return ["images": images,
-                    "similar_images": true]
+                    "similar_images": similar_images]
+        case .healthAssessment(let images, let similar_images):
+            return ["images": images,
+                    "similar_images": similar_images,
+                                                    ]
         }
     }
 }

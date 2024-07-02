@@ -28,6 +28,8 @@
 		4577ACA92C2AFFC90019D72D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4577ACA82C2AFFC90019D72D /* Kingfisher */; };
 		45E844C22C14A2F20054A53B /* CameraPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E844C12C14A2F20054A53B /* CameraPickerView.swift */; };
 		45FB74CA2C0AEFB200BB7A1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB74C92C0AEFB200BB7A1F /* HomeView.swift */; };
+		7F9152572C33109100DB143A /* DiagnoseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9152562C33109100DB143A /* DiagnoseModels.swift */; };
+		7F9152592C33118F00DB143A /* HealthRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9152582C33118F00DB143A /* HealthRequestManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		4571DE292C17493100CC977A /* PlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantView.swift; sourceTree = "<group>"; };
 		45E844C12C14A2F20054A53B /* CameraPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPickerView.swift; sourceTree = "<group>"; };
 		45FB74C92C0AEFB200BB7A1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		7F9152562C33109100DB143A /* DiagnoseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnoseModels.swift; sourceTree = "<group>"; };
+		7F9152582C33118F00DB143A /* HealthRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRequestManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			children = (
 				45287D8C2C29BC4F00CC6594 /* RequestManager.swift */,
 				45287D872C29B69B00CC6594 /* ErrorDetailModel.swift */,
+				7F9152582C33118F00DB143A /* HealthRequestManager.swift */,
 			);
 			path = RequestManager;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				45287D8F2C29BCE900CC6594 /* IdentificationModel.swift */,
+				7F9152562C33109100DB143A /* DiagnoseModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				45287D812C29B00E00CC6594 /* NetworkManagerProtocol.swift in Sources */,
 				456435FE2C09118F00E84B62 /* TabBar.swift in Sources */,
 				4571DE2A2C17493100CC977A /* PlantView.swift in Sources */,
+				7F9152572C33109100DB143A /* DiagnoseModels.swift in Sources */,
 				45287D902C29BCE900CC6594 /* IdentificationModel.swift in Sources */,
 				45287D8D2C29BC4F00CC6594 /* RequestManager.swift in Sources */,
 				45287D862C29B36D00CC6594 /* ImageConvertor.swift in Sources */,
@@ -344,6 +351,7 @@
 				09FFE0612C0C99D900E92871 /* DiagnoseView.swift in Sources */,
 				456435E62C09087B00E84B62 /* DrPlantApp.swift in Sources */,
 				45287D832C29B04900CC6594 /* EndPoints.swift in Sources */,
+				7F9152592C33118F00DB143A /* HealthRequestManager.swift in Sources */,
 				45287D8A2C29BBE500CC6594 /* HomeViewModel.swift in Sources */,
 				45E844C22C14A2F20054A53B /* CameraPickerView.swift in Sources */,
 			);

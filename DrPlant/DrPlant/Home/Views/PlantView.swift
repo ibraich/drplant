@@ -13,6 +13,7 @@ struct PlantView: View {
     
     let mainImage: UIImage?
     var model: IdentificationModel?
+    var model_diagnose: HealthAssessmentModel?
     let images = ["homeimage", "homeimage", "homeimage"]
     let information = [["Shiitake",
                         "East Asia",
@@ -117,7 +118,8 @@ struct PlantView: View {
                         .padding()
                         HStack {
                             VStack {
-                                NavigationLink(destination: PlantConditionView().navigationBarBackButtonHidden(true),
+                                NavigationLink(destination: PlantConditionView(model_diagnose: model_diagnose)
+                                    .navigationBarBackButtonHidden(true),
                                                label: {
                                     Image(systemName: "humidity")
                                         .frame(width: 119,

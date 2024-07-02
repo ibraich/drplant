@@ -10,8 +10,8 @@ struct HomeView: View {
     @State private var isPhotoPicked = false
     @State private var plantName: String = ""
     @State private var probability: Double = 0.0
-    @State private var similarImages: [String] = []x
-    @StateObject var homeViewModel = HomeViewModel(requestManager: RequestManager())
+    @State private var similarImages: [String] = []
+    @StateObject var homeViewModel = HomeViewModel(requestManager: RequestManager(),healthAssessmentRequestManager: HealthAssessmentRequestManager())
     
     var body: some View {
         NavigationView {
@@ -65,7 +65,7 @@ struct HomeView: View {
                     .padding(20)
                     
                 }
-                NavigationLink(destination: PlantView(mainImage: mainImage, model: homeViewModel.model).navigationBarBackButtonHidden(true), isActive: $homeViewModel.showPlantView) {
+                NavigationLink(destination: PlantView(mainImage: mainImage, model: homeViewModel.model,model_diagnose:homeViewModel.model_diagnose).navigationBarBackButtonHidden(true), isActive: $homeViewModel.showPlantView) {
                     EmptyView()
                 }
                 Spacer()

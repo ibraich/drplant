@@ -1,46 +1,54 @@
 import SwiftUI
 
 struct PlantConditionView: View {
-    let mainImage = "i"
+    let mainImage = "i" // Placeholder for main image
+    var model_diagnose: HealthAssessmentModel?
     
     struct PlantInfo {
-        let imageName: String
-        let description: String
-        let biological: String
-        let chemical: String
-        let prevention: String
+        let name: String
         let probability: Double
+        let imageURL: URL // Store image URL
+        
+        init(name: String, probability: Double, imageURL: URL) {
+            self.name = name
+            self.probability = probability
+            self.imageURL = imageURL
+        }
     }
     
-    let plantInfos = [
-        PlantInfo(
-            imageName: "i1",
-            description: "Lack of water",
-            biological: "For potted plants: if the soil is really dry, you may immerse the whole pot in water and wait until the soil absorbs the water.",
-            chemical: "You may apply hydrogel for plants to the soil to increase water retention capacity.",
-            prevention: "Mulch plants with a layer of organic mulch to reduce soil evaporation.",
-            probability: 0.96
-        ),
-        PlantInfo(
-            imageName: "i2",
-            description: "Xanthomonas bacteria",
-            biological: "Remove infected leaves and avoid overhead watering.",
-            chemical: "Use copper-based fungicides to treat bacterial spots.",
-            prevention: "Ensure proper plant spacing and air circulation.",
-            probability: 0.45
-        ),
-        PlantInfo(
-            imageName: "i3",
-            description: "Too small pot",
-            biological: "Repot the plant into a larger container with fresh soil.",
-            chemical: "Use a balanced fertilizer to support new growth.",
-            prevention: "Regularly check root growth and repot as necessary.",
-            probability: 0.05
-        )
-    ]
+    var plantInfos: [PlantInfo] {
+        guard let model_diagnose = model_diagnose else {
+            return [] // Return empty array if model_diagnose is nil
+        }
+        
+        guard model_diagnose.result.disease.suggestions.count >= 3 else {
+            return [] // Return empty array if there are fewer than 3 suggestions
+        }
+        
+        var infos: [PlantInfo] = []
+        
+        for i in 0..<3 { // Loop through the first three suggestions
+            let suggestion = model_diagnose.result.disease.suggestions[i]
+            
+            // Check if the suggestion has at least one similar image
+            if let firstSimilarImage = suggestion.similarImages.first {
+                // Create PlantInfo instance with imageURL as URL
+                if let url = URL(string: firstSimilarImage.url) {
+                    let plantInfo = PlantInfo(
+                        name: suggestion.name,
+                        probability: suggestion.probability,
+                        imageURL: url
+                    )
+                    infos.append(plantInfo)
+                }
+            }
+        }
+        
+        return infos
+    }
     
-    @State private var selectedImageIndex = 0
-
+    @State private var selectedImageIndex = 0 // Track selected image index
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -50,6 +58,7 @@ struct PlantConditionView: View {
                         .padding(.bottom, 20)
                     Spacer()
                 }
+                
                 Image(mainImage)
                     .resizable()
                     .scaledToFit()
@@ -64,15 +73,27 @@ struct PlantConditionView: View {
                     ZStack(alignment: .center) {
                         ForEach(plantInfos.indices, id: \.self) { index in
                             VStack {
-                                Image(plantInfos[index].imageName)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 150, height: 150)
-                                    .cornerRadius(10)
-                                    .padding(.horizontal, 10)
-                                    .blur(radius: selectedImageIndex == index ? 0 : 10)
-                                    .offset(x: CGFloat(index - selectedImageIndex) * 220)
-                                    .animation(.easeInOut, value: selectedImageIndex)
+                                AsyncImage(url: plantInfos[index].imageURL) { phase in
+                                    switch phase {
+                                    case .empty:
+                                        ProgressView()
+                                    case .success(let image):
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 150, height: 150)
+                                            .cornerRadius(10)
+                                            .padding(.horizontal, 10)
+                                            .blur(radius: selectedImageIndex == index ? 0 : 10)
+                                            .offset(x: CGFloat(index - selectedImageIndex) * 220)
+                                            .animation(.easeInOut, value: selectedImageIndex)
+                                    case .failure:
+                                        Text("Failed to load")
+                                            .foregroundColor(.red)
+                                    @unknown default:
+                                        EmptyView()
+                                    }
+                                }
                                 
                                 if selectedImageIndex == index {
                                     Text(getProbabilityLabel(probability: plantInfos[index].probability))
@@ -103,44 +124,13 @@ struct PlantConditionView: View {
                         }
                 )
                 .padding(.horizontal, 10)
-                // Changing text under the carousel
-                Text(plantInfos[selectedImageIndex].description)
+                
+                // Description and other details
+                Text(plantInfos[selectedImageIndex].name)
                     .font(.headline)
                     .fontWeight(.bold)
                     .padding(.bottom, 10)
                     .frame(maxWidth: .infinity, alignment: .center)
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Treatment")
-                        .font(.headline)
-                        .padding(.vertical, 5)
-                    
-                    Group {
-                        Text("biological:")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                        
-                        Text(plantInfos[selectedImageIndex].biological)
-                            .padding(.leading, 10)
-                        
-                        Text("chemical:")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                            .padding(.top, 10)
-                        
-                        Text(plantInfos[selectedImageIndex].chemical)
-                            .padding(.leading, 10)
-                        
-                        Text("prevention:")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                            .padding(.top, 10)
-                        
-                        Text(plantInfos[selectedImageIndex].prevention)
-                            .padding(.leading, 10)
-                    }
-                }
-                .padding(.horizontal, 10)
                 
                 Spacer()
             }
@@ -169,9 +159,44 @@ struct PlantConditionView: View {
     }
 }
 
-struct PlantConditionView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlantConditionView()
+struct AsyncImage<Content: View>: View {
+    @StateObject private var loader: ImageLoader
+    private let content: (AsyncImagePhase) -> Content
+    
+    init(url: URL, @ViewBuilder content: @escaping (AsyncImagePhase) -> Content) {
+        self.content = content
+        _loader = StateObject(wrappedValue: ImageLoader(url: url))
+    }
+    
+    var body: some View {
+        content(loader.phase)
+            .onAppear(perform: loader.load)
     }
 }
 
+enum AsyncImagePhase {
+    case empty
+    case success(Image)
+    case failure
+}
+
+class ImageLoader: ObservableObject {
+    @Published var phase: AsyncImagePhase = .empty
+    private let url: URL
+    
+    init(url: URL) {
+        self.url = url
+    }
+    
+    func load() {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                if let data = data, let uiImage = UIImage(data: data) {
+                    self.phase = .success(Image(uiImage: uiImage))
+                } else {
+                    self.phase = .failure
+                }
+            }
+        }.resume()
+    }
+}
