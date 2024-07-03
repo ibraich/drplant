@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PlantConditionView: View {
-    let mainImage = "i" // Placeholder for main image
+    let mainImage: UIImage?
     var model_diagnose: HealthAssessmentModel?
     
     struct PlantInfo {
@@ -73,10 +73,10 @@ struct PlantConditionView: View {
                     Spacer()
                 }
                 
-                Image(mainImage)
+                Image(uiImage: mainImage ?? UIImage(imageLiteralResourceName: "homeimage"))
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150, height: 150)
+                    .frame(width: 150, height:150)
                     .cornerRadius(10)
                     .padding(.bottom, 10)
                     .frame(maxWidth: .infinity, alignment: .center)

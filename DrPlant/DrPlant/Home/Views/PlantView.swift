@@ -118,7 +118,7 @@ struct PlantView: View {
                         .padding()
                         HStack {
                             VStack {
-                                NavigationLink(destination: PlantConditionView(model_diagnose: model_diagnose)
+                                NavigationLink(destination: PlantConditionView(mainImage: mainImage,model_diagnose: model_diagnose)
                                     .navigationBarBackButtonHidden(true),
                                                label: {
                                     Image(systemName: "humidity")
@@ -133,7 +133,7 @@ struct PlantView: View {
                             .padding(.horizontal, 20)
                             
                             VStack {
-                                NavigationLink(destination: PlantConditionView().navigationBarBackButtonHidden(true),
+                                NavigationLink(destination: PlantConditionView(mainImage: mainImage).navigationBarBackButtonHidden(true),
                                                label: {
                                     Image(systemName: "info.circle")
                                         .frame(width: 119,
