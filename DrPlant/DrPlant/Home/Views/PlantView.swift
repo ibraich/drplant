@@ -122,7 +122,7 @@ struct PlantView: View {
                                     .navigationBarBackButtonHidden(true),
                                                label: {
                                     Image(systemName: "humidity")
-                                        .frame(width: 119,
+                                        .frame(width: 100,
                                                height: 46)
                                         .background(Color.black)
                                         .cornerRadius(6)
@@ -130,13 +130,13 @@ struct PlantView: View {
                                 })
                                 Text("Diagnose")
                             }
-                            .padding(.horizontal, 20)
+                            .padding(.horizontal, 10)
                             
                             VStack {
                                 NavigationLink(destination: PlantConditionView(mainImage: mainImage).navigationBarBackButtonHidden(true),
                                                label: {
                                     Image(systemName: "info.circle")
-                                        .frame(width: 119,
+                                        .frame(width: 100,
                                                height: 46)
                                         .background(Color.black)
                                         .cornerRadius(6)
@@ -144,7 +144,21 @@ struct PlantView: View {
                                 })
                                 Text("Details")
                             }
-                            .padding(.horizontal, 20)
+                            .padding(.horizontal, 10)
+                            VStack {
+                                NavigationLink(destination: ChatBotView()
+                                    .navigationBarBackButtonHidden(true),
+                                               label: {
+                                    Image(systemName: "person")
+                                        .frame(width: 100,
+                                               height: 46)
+                                        .background(Color.black)
+                                        .cornerRadius(6)
+                                        .foregroundColor(Color.white)
+                                })
+                                Text("ChatBot")
+                            }
+                            .padding(.horizontal, 10)
                         }
                     }
                 }
