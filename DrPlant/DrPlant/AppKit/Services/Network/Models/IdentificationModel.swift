@@ -8,8 +8,8 @@
 import Foundation
 
 struct IdentificationModel: Codable {
+    let accessToken: String
     let result: Result
-
     struct Result: Codable {
         let classification: Classification
 
@@ -40,4 +40,8 @@ struct IdentificationModel: Codable {
             }
         }
     }
+    enum CodingKeys: String, CodingKey {
+            case accessToken = "access_token"
+            case result
+        }
 }
