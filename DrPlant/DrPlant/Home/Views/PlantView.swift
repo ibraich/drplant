@@ -146,7 +146,7 @@ struct PlantView: View {
                             }
                             .padding(.horizontal, 10)
                             VStack {
-                                NavigationLink(destination: ChatBotView()
+                                NavigationLink(destination: ChatBotView(model: model)
                                     .navigationBarBackButtonHidden(true),
                                                label: {
                                     Image(systemName: "person")

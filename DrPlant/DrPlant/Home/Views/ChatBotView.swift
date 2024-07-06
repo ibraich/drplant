@@ -7,6 +7,8 @@ struct ChatMessage: Identifiable {
 }
 
 struct ChatBotView: View {
+    var model: IdentificationModel?
+    
     @State private var messages: [ChatMessage] = []
     @State private var userQuestion: String = ""
     @State private var accessToken: String = "z7myxWxJwPs77hQ"
