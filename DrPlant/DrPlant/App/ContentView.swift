@@ -26,7 +26,7 @@ struct ContentView: View {
     var appViews: some View {
         switch selectedPage {
         case 0:
-            EmptyView()
+            SearchView()
         case 1:
             HomeView()
         case 2:

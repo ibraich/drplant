@@ -81,7 +81,7 @@ public class NetworkManager: NetworkManagerProtocol {
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                  timeoutInterval: 30.0)
         
-        let tokenID = "wzoho5GxdZZTOL3Su1eqP8Rjlf4PhX7Do0aPDYyCLPf1PDO1Mz"
+        let tokenID = "TzmkUH1lVPNVqK7YTNHBk8xER0tL9VquupWB4MK2I1SM3vQB6r"
         request.httpMethod = endPoint.httpMethod.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         

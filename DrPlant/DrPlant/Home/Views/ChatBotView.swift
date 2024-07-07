@@ -8,10 +8,8 @@ struct ChatMessage: Identifiable {
 
 struct ChatBotView: View {
     var model: IdentificationModel?
-    
     @State private var messages: [ChatMessage] = []
     @State private var userQuestion: String = ""
-    @State private var accessToken: String = "z7myxWxJwPs77hQ"
     @State private var predefinedQuestions: [String] = [
         "How do I take care of this plant?",
         "Is this plant edible?",
@@ -86,10 +84,15 @@ struct ChatBotView: View {
     }
     
     func sendMessage(_ question: String) {
+        guard let accessToken = model?.accessToken else {
+            print("No access token found.")
+            return
+        }
+        
         let url = URL(string: "https://plant.id/api/v3/identification/\(accessToken)/conversation")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("TzmkUH1lVPNVqK7YTNHBk8xER0tL9VquupWB4MK2I1SM3vQB6r", forHTTPHeaderField: "Api-Key")
+        request.setValue("your_api_key", forHTTPHeaderField: "Api-Key")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let body: [String: Any] = [
@@ -108,7 +111,9 @@ struct ChatBotView: View {
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
                 do {
-                
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Chat Response: \(responseString)")
+                    }
                     if let responseDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                        let messagesArray = responseDict["messages"] as? [[String: Any]] {
                         if let lastMessage = messagesArray.last {
@@ -140,6 +145,6 @@ struct ChatBotView: View {
 
 struct ChatBotView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatBotView()
+        ChatBotView(model: IdentificationModel(accessToken: "z7myxWxJwPs77hQ", result: IdentificationModel.Result(classification: IdentificationModel.Result.Classification(suggestions: []))))
     }
 }
