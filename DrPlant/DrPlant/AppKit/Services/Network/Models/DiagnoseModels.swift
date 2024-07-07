@@ -7,6 +7,7 @@
 
 import Foundation
 struct HealthAssessmentModel: Codable {
+    let accessToken: String
     let result: Result
     struct Result: Codable {
         let disease: Disease
@@ -63,4 +64,8 @@ struct HealthAssessmentModel: Codable {
             }
         }
     }
+    enum CodingKeys: String, CodingKey {
+            case accessToken = "access_token"
+            case result
+        }
 }
