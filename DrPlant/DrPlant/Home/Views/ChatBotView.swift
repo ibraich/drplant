@@ -92,7 +92,7 @@ struct ChatBotView: View {
         let url = URL(string: "https://plant.id/api/v3/identification/\(accessToken)/conversation")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("your_api_key", forHTTPHeaderField: "Api-Key")
+        request.setValue("TzmkUH1lVPNVqK7YTNHBk8xER0tL9VquupWB4MK2I1SM3vQB6r", forHTTPHeaderField: "Api-Key")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let body: [String: Any] = [
