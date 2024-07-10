@@ -5,25 +5,25 @@ struct PlantConditionView: View {
     var model_diagnose: HealthAssessmentModel?
     
     struct PlantInfo {
-            let name: String
-            let probability: Double
-            let imageURL: URL // Store image URL
-            let localName: String
-            let description: String
-            let chemical: [String]?
-            let biological: [String]?
-            let prevention: [String]?
-            init(name: String, probability: Double, imageURL: URL, localName: String, description: String,chemical: [String]?, biological: [String]?, prevention: [String]?) {
-                self.name = name
-                self.probability = probability
-                self.imageURL = imageURL
-                self.localName = localName
-                self.description = description
-                self.chemical = chemical
-                self.biological = biological
-                self.prevention = prevention
-            }
+        let name: String
+        let probability: Double
+        let imageURL: URL // Store image URL
+        let localName: String
+        let description: String
+        let chemical: [String]?
+        let biological: [String]?
+        let prevention: [String]?
+        init(name: String, probability: Double, imageURL: URL, localName: String, description: String,chemical: [String]?, biological: [String]?, prevention: [String]?) {
+            self.name = name
+            self.probability = probability
+            self.imageURL = imageURL
+            self.localName = localName
+            self.description = description
+            self.chemical = chemical
+            self.biological = biological
+            self.prevention = prevention
         }
+    }
     
     var plantInfos: [PlantInfo] {
         guard let model_diagnose = model_diagnose else {
@@ -138,37 +138,41 @@ struct PlantConditionView: View {
                 )
                 .padding(.horizontal, 10)
                 
-                // Description and other details
-                Text(plantInfos[selectedImageIndex].name)
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 10)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                
-                Text(plantInfos[selectedImageIndex].description)
-                    .font(.body)
-                    .padding(.bottom, 10)
-                if let chemical = plantInfos[selectedImageIndex].chemical {
-                                    Text("Chemical Treatment:")
-                                        .font(.headline)
-                                        .padding(.top, 10)
-                                    ForEach(chemical, id: \.self) { item in
-                                        Text(item)
-                                            .font(.subheadline)
-                                            .padding(.leading, 10)
-                                    }
-                                }
-                                
-                if let prevention = plantInfos[selectedImageIndex].prevention {
-                                    Text("Prevention:")
-                                        .font(.headline)
-                                        .padding(.top, 10)
-                                    ForEach(prevention, id: \.self) { item in
-                                        Text(item)
-                                            .font(.subheadline)
-                                            .padding(.leading, 10)
-                                    }
-                                }
+                if selectedImageIndex < plantInfos.count {
+                    // Description and other details
+                    Text(plantInfos[selectedImageIndex].name)
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 10)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    Text(plantInfos[selectedImageIndex].description)
+                        .font(.body)
+                        .padding(.bottom, 10)
+                    if let chemical = plantInfos[selectedImageIndex].chemical {
+                        Text("Chemical Treatment:")
+                            .font(.headline)
+                            .padding(.top, 10)
+                        ForEach(chemical, id: \.self) { item in
+                            Text(item)
+                                .font(.subheadline)
+                                .padding(.leading, 10)
+                        }
+                    }
+                    
+                    if let prevention = plantInfos[selectedImageIndex].prevention {
+                        Text("Prevention:")
+                            .font(.headline)
+                            .padding(.top, 10)
+                        ForEach(prevention, id: \.self) { item in
+                            Text(item)
+                                .font(.subheadline)
+                                .padding(.leading, 10)
+                        }
+                    }
+                } else {
+                    Text("Sorry! Somethıng ıs wrong")
+                }
                 
                 Spacer()
             }
