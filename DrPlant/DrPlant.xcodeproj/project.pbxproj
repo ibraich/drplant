@@ -13,6 +13,17 @@
 		095694272C39E12A001C587A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095694262C39E12A001C587A /* SearchView.swift */; };
 		095694292C39E16D001C587A /* ChatBotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095694282C39E16D001C587A /* ChatBotView.swift */; };
 		09FFE0612C0C99D900E92871 /* DiagnoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FFE0602C0C99D900E92871 /* DiagnoseView.swift */; };
+		1F881EFB2C42B92300E5BF80 /* PlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881EFA2C42B92300E5BF80 /* PlantViewModel.swift */; };
+		1F881EFE2C42BE8700E5BF80 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881EFD2C42BE8700E5BF80 /* AppError.swift */; };
+		1F881F002C42BEA200E5BF80 /* PhotosPickerItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881EFF2C42BEA200E5BF80 /* PhotosPickerItem+Extension.swift */; };
+		1F881F022C42C44B00E5BF80 /* PlantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881F012C42C44B00E5BF80 /* PlantInfo.swift */; };
+		1F881F072C42C6C800E5BF80 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1F881F062C42C6C800E5BF80 /* RealmSwift */; };
+		1F881F0C2C42C71100E5BF80 /* RecentSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881F0B2C42C71100E5BF80 /* RecentSearch.swift */; };
+		1F881F0F2C42DE9000E5BF80 /* RealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881F0E2C42DE9000E5BF80 /* RealmDatabase.swift */; };
+		1F881F112C42DFCF00E5BF80 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881F102C42DFCF00E5BF80 /* Services.swift */; };
+		1F881F152C42E02700E5BF80 /* RecentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881F142C42E02700E5BF80 /* RecentSearchView.swift */; };
+		1F881F182C42E07D00E5BF80 /* RecentSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881F172C42E07D00E5BF80 /* RecentSearchViewModel.swift */; };
+		1F881F1B2C42E25900E5BF80 /* DomainSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F881F1A2C42E25900E5BF80 /* DomainSearchResult.swift */; };
 		45287D7F2C29AFE500CC6594 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45287D7E2C29AFE500CC6594 /* NetworkManager.swift */; };
 		45287D812C29B00E00CC6594 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45287D802C29B00E00CC6594 /* NetworkManagerProtocol.swift */; };
 		45287D832C29B04900CC6594 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45287D822C29B04900CC6594 /* EndPoints.swift */; };
@@ -28,11 +39,26 @@
 		456435FE2C09118F00E84B62 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456435FD2C09118F00E84B62 /* TabBar.swift */; };
 		4571DE2A2C17493100CC977A /* PlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4571DE292C17493100CC977A /* PlantView.swift */; };
 		4575C5752C3C05D6000C12BD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4575C5742C3C05D6000C12BD /* Kingfisher */; };
+		45CEB3B72C45CA7100B79311 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 1F881F062C42C6C800E5BF80 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		45E844C22C14A2F20054A53B /* CameraPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E844C12C14A2F20054A53B /* CameraPickerView.swift */; };
 		45FB74CA2C0AEFB200BB7A1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB74C92C0AEFB200BB7A1F /* HomeView.swift */; };
 		7F9152572C33109100DB143A /* DiagnoseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9152562C33109100DB143A /* DiagnoseModels.swift */; };
 		7F9152592C33118F00DB143A /* HealthRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9152582C33118F00DB143A /* HealthRequestManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		45CEB3B82C45CA7100B79311 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				45CEB3B72C45CA7100B79311 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		095220832C1F3B4700D6DBAB /* PlantResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantResponse.swift; sourceTree = "<group>"; };
@@ -41,6 +67,16 @@
 		095694262C39E12A001C587A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		095694282C39E16D001C587A /* ChatBotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotView.swift; sourceTree = "<group>"; };
 		09FFE0602C0C99D900E92871 /* DiagnoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnoseView.swift; sourceTree = "<group>"; };
+		1F881EFA2C42B92300E5BF80 /* PlantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantViewModel.swift; sourceTree = "<group>"; };
+		1F881EFD2C42BE8700E5BF80 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		1F881EFF2C42BEA200E5BF80 /* PhotosPickerItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotosPickerItem+Extension.swift"; sourceTree = "<group>"; };
+		1F881F012C42C44B00E5BF80 /* PlantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantInfo.swift; sourceTree = "<group>"; };
+		1F881F0B2C42C71100E5BF80 /* RecentSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearch.swift; sourceTree = "<group>"; };
+		1F881F0E2C42DE9000E5BF80 /* RealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabase.swift; sourceTree = "<group>"; };
+		1F881F102C42DFCF00E5BF80 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		1F881F142C42E02700E5BF80 /* RecentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchView.swift; sourceTree = "<group>"; };
+		1F881F172C42E07D00E5BF80 /* RecentSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchViewModel.swift; sourceTree = "<group>"; };
+		1F881F1A2C42E25900E5BF80 /* DomainSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainSearchResult.swift; sourceTree = "<group>"; };
 		45287D7E2C29AFE500CC6594 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		45287D802C29B00E00CC6594 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		45287D822C29B04900CC6594 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
@@ -67,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F881F072C42C6C800E5BF80 /* RealmSwift in Frameworks */,
 				4575C5752C3C05D6000C12BD /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +111,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F881EF92C42B91600E5BF80 /* PlantDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4571DE292C17493100CC977A /* PlantView.swift */,
+				1F881EFA2C42B92300E5BF80 /* PlantViewModel.swift */,
+			);
+			path = PlantDetails;
+			sourceTree = "<group>";
+		};
+		1F881EFC2C42BE7E00E5BF80 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F881EFD2C42BE8700E5BF80 /* AppError.swift */,
+				1F881F012C42C44B00E5BF80 /* PlantInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1F881F0A2C42C70200E5BF80 /* DatabaseEntities */ = {
+			isa = PBXGroup;
+			children = (
+				1F881F0B2C42C71100E5BF80 /* RecentSearch.swift */,
+			);
+			path = DatabaseEntities;
+			sourceTree = "<group>";
+		};
+		1F881F0D2C42DE8300E5BF80 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				1F881F0A2C42C70200E5BF80 /* DatabaseEntities */,
+				1F881F0E2C42DE9000E5BF80 /* RealmDatabase.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		1F881F122C42E01000E5BF80 /* RecentSearch */ = {
+			isa = PBXGroup;
+			children = (
+				1F881F192C42E25200E5BF80 /* Models */,
+				1F881F162C42E07100E5BF80 /* ViewModel */,
+				1F881F132C42E01E00E5BF80 /* View */,
+			);
+			path = RecentSearch;
+			sourceTree = "<group>";
+		};
+		1F881F132C42E01E00E5BF80 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F881F142C42E02700E5BF80 /* RecentSearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F881F162C42E07100E5BF80 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1F881F172C42E07D00E5BF80 /* RecentSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1F881F192C42E25200E5BF80 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F881F1A2C42E25900E5BF80 /* DomainSearchResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		45287D7C2C29AFBF00CC6594 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +250,7 @@
 				456435F32C090DFD00E84B62 /* App */,
 				456435F42C090E5400E84B62 /* AppKit */,
 				456435F92C090EAC00E84B62 /* Home */,
+				1F881F122C42E01000E5BF80 /* RecentSearch */,
 				456435FA2C090EB600E84B62 /* Recources */,
 				456435EB2C09087E00E84B62 /* Preview Content */,
 			);
@@ -170,6 +277,7 @@
 		456435F42C090E5400E84B62 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
+				1F881F0D2C42DE8300E5BF80 /* Database */,
 				456435F82C090E9100E84B62 /* Services */,
 				456435F72C090E8400E84B62 /* Extension */,
 				456435F52C090E6A00E84B62 /* UI */,
@@ -196,6 +304,7 @@
 		456435F72C090E8400E84B62 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1F881EFF2C42BEA200E5BF80 /* PhotosPickerItem+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -206,6 +315,7 @@
 				45287D842C29B11C00CC6594 /* ImageConventor */,
 				45287D7C2C29AFBF00CC6594 /* Network */,
 				45E844C02C14A2AF0054A53B /* CameraPickerView */,
+				1F881F102C42DFCF00E5BF80 /* Services.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -213,6 +323,7 @@
 		456435F92C090EAC00E84B62 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1F881EFC2C42BE7E00E5BF80 /* Models */,
 				45FB74C82C0AEF9900BB7A1F /* ViewModels */,
 				45FB74C72C0AEF8E00BB7A1F /* Views */,
 			);
@@ -254,9 +365,9 @@
 		45FB74C72C0AEF8E00BB7A1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F881EF92C42B91600E5BF80 /* PlantDetails */,
 				45FB74C92C0AEFB200BB7A1F /* HomeView.swift */,
 				09FFE0602C0C99D900E92871 /* DiagnoseView.swift */,
-				4571DE292C17493100CC977A /* PlantView.swift */,
 				095220832C1F3B4700D6DBAB /* PlantResponse.swift */,
 				095220932C1F5ED500D6DBAB /* LoadingView.swift */,
 				095694262C39E12A001C587A /* SearchView.swift */,
@@ -283,6 +394,7 @@
 				456435DE2C09087B00E84B62 /* Sources */,
 				456435DF2C09087B00E84B62 /* Frameworks */,
 				456435E02C09087B00E84B62 /* Resources */,
+				45CEB3B82C45CA7100B79311 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -291,6 +403,7 @@
 			name = DrPlant;
 			packageProductDependencies = (
 				4575C5742C3C05D6000C12BD /* Kingfisher */,
+				1F881F062C42C6C800E5BF80 /* RealmSwift */,
 			);
 			productName = DrPlant;
 			productReference = 456435E22C09087B00E84B62 /* DrPlant.app */;
@@ -321,6 +434,7 @@
 			mainGroup = 456435D92C09087B00E84B62;
 			packageReferences = (
 				4575C5722C3C0438000C12BD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1F881F032C42C6C800E5BF80 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 456435E32C09087B00E84B62 /* Products */;
 			projectDirPath = "";
@@ -351,18 +465,28 @@
 			files = (
 				095694272C39E12A001C587A /* SearchView.swift in Sources */,
 				45287D812C29B00E00CC6594 /* NetworkManagerProtocol.swift in Sources */,
+				1F881F002C42BEA200E5BF80 /* PhotosPickerItem+Extension.swift in Sources */,
 				456435FE2C09118F00E84B62 /* TabBar.swift in Sources */,
+				1F881F022C42C44B00E5BF80 /* PlantInfo.swift in Sources */,
 				4571DE2A2C17493100CC977A /* PlantView.swift in Sources */,
 				7F9152572C33109100DB143A /* DiagnoseModels.swift in Sources */,
 				45287D902C29BCE900CC6594 /* IdentificationModel.swift in Sources */,
 				45287D8D2C29BC4F00CC6594 /* RequestManager.swift in Sources */,
 				45287D862C29B36D00CC6594 /* ImageConvertor.swift in Sources */,
 				45287D7F2C29AFE500CC6594 /* NetworkManager.swift in Sources */,
+				1F881F182C42E07D00E5BF80 /* RecentSearchViewModel.swift in Sources */,
 				45287D882C29B69B00CC6594 /* ErrorDetailModel.swift in Sources */,
 				45FB74CA2C0AEFB200BB7A1F /* HomeView.swift in Sources */,
 				095220942C1F5ED500D6DBAB /* LoadingView.swift in Sources */,
+				1F881F0F2C42DE9000E5BF80 /* RealmDatabase.swift in Sources */,
+				1F881F0C2C42C71100E5BF80 /* RecentSearch.swift in Sources */,
 				456435E82C09087B00E84B62 /* ContentView.swift in Sources */,
+				1F881F1B2C42E25900E5BF80 /* DomainSearchResult.swift in Sources */,
+				1F881F112C42DFCF00E5BF80 /* Services.swift in Sources */,
+				1F881EFE2C42BE8700E5BF80 /* AppError.swift in Sources */,
 				095220842C1F3B4700D6DBAB /* PlantResponse.swift in Sources */,
+				1F881EFB2C42B92300E5BF80 /* PlantViewModel.swift in Sources */,
+				1F881F152C42E02700E5BF80 /* RecentSearchView.swift in Sources */,
 				09FFE0612C0C99D900E92871 /* DiagnoseView.swift in Sources */,
 				095694292C39E16D001C587A /* ChatBotView.swift in Sources */,
 				456435E62C09087B00E84B62 /* DrPlantApp.swift in Sources */,
@@ -501,6 +625,7 @@
 				DEVELOPMENT_TEAM = JKPC7V57YU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -530,6 +655,7 @@
 				DEVELOPMENT_TEAM = JKPC7V57YU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -572,6 +698,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1F881F032C42C6C800E5BF80 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4575C5722C3C0438000C12BD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -583,6 +717,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1F881F062C42C6C800E5BF80 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F881F032C42C6C800E5BF80 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		4575C5742C3C05D6000C12BD /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4575C5722C3C0438000C12BD /* XCRemoteSwiftPackageReference "Kingfisher" */;

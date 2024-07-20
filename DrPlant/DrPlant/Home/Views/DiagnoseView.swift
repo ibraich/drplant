@@ -1,29 +1,10 @@
 import SwiftUI
 
 struct PlantConditionView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     let mainImage: UIImage?
     var model_diagnose: HealthAssessmentModel?
-    
-    struct PlantInfo {
-        let name: String
-        let probability: Double
-        let imageURL: URL // Store image URL
-        let localName: String
-        let description: String
-        let chemical: [String]?
-        let biological: [String]?
-        let prevention: [String]?
-        init(name: String, probability: Double, imageURL: URL, localName: String, description: String,chemical: [String]?, biological: [String]?, prevention: [String]?) {
-            self.name = name
-            self.probability = probability
-            self.imageURL = imageURL
-            self.localName = localName
-            self.description = description
-            self.chemical = chemical
-            self.biological = biological
-            self.prevention = prevention
-        }
-    }
     
     var plantInfos: [PlantInfo] {
         guard let model_diagnose = model_diagnose else {
@@ -73,13 +54,13 @@ struct PlantConditionView: View {
                     Spacer()
                 }
                 
-                Image(uiImage: mainImage ?? UIImage(imageLiteralResourceName: "homeimage"))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 150, height:150)
-                    .cornerRadius(10)
-                    .padding(.bottom, 10)
-                    .frame(maxWidth: .infinity, alignment: .center)
+//                Image(uiImage: mainImage ?? UIImage(imageLiteralResourceName: "homeimage"))
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 150, height:150)
+//                    .cornerRadius(10)
+//                    .padding(.bottom, 10)
+//                    .frame(maxWidth: .infinity, alignment: .center)
                 
                 HStack(spacing: 0) {
                     Spacer()
@@ -177,7 +158,18 @@ struct PlantConditionView: View {
                 Spacer()
             }
             .padding(.horizontal)
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(.black)
+                    })
+                }
+            })
         }
+        .navigationBarBackButtonHidden()
     }
     
     func getProbabilityLabel(probability: Double) -> String {

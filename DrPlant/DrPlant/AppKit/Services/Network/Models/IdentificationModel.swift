@@ -7,16 +7,17 @@
 
 import Foundation
 
-struct IdentificationModel: Codable {
+struct IdentificationModel: Codable, Hashable, Equatable {
     let accessToken: String
     let result: Result
-    struct Result: Codable {
+    
+    struct Result: Codable, Hashable, Equatable {
         let classification: Classification
 
-        struct Classification: Codable {
+        struct Classification: Codable, Hashable, Equatable {
             let suggestions: [Suggestion]
 
-            struct Suggestion: Codable {
+            struct Suggestion: Codable, Hashable, Equatable {
                 let name: String
                 let probability: Double
                 let similarImages: [SimilarImage]
@@ -26,7 +27,7 @@ struct IdentificationModel: Codable {
                     case similarImages = "similar_images"
                 }
 
-                struct SimilarImage: Codable {
+                struct SimilarImage: Codable, Hashable, Equatable {
                     let id: String
                     let similarity: Double
                     let url: String

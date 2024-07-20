@@ -30,7 +30,7 @@ struct ContentView: View {
         case 1:
             HomeView()
         case 2:
-            EmptyView()
+            RecentSearchView()
         default:
             EmptyView()
         }
