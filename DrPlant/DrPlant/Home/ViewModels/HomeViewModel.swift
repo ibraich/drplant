@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
+    
+    // MARK: - Public properties
+    
     @Published var showHomeView = false
     @Published var isLoading = false
     
@@ -19,48 +22,98 @@ class HomeViewModel: ObservableObject {
     @Published var model: IdentificationModel?
     @Published var showPlantView: Bool = false
     
-    var requestManager: RequestManager
-    var healthAssessmentRequestManager:HealthAssessmentRequestManager
-    init(requestManager: RequestManager,healthAssessmentRequestManager: HealthAssessmentRequestManager) {
+    // MARK: - Private properties
+    
+    private var requestManager: RequestManager
+    private var healthAssessmentRequestManager: HealthAssessmentRequestManager
+    private let database = Services.database
+    
+    private let group = DispatchGroup()
+    
+    // MARK: - Initialisation
+    
+    init(
+        requestManager: RequestManager,
+        healthAssessmentRequestManager: HealthAssessmentRequestManager
+    ) {
         self.requestManager = requestManager
         self.healthAssessmentRequestManager = healthAssessmentRequestManager
     }
     
-    func uploadButtonTapped() {
+    // MARK: - Public methods
+    
+    func uploadButtonTapped(_ image: UIImage) {
         isLoading = true
-        requestManager.recognition(endPoint: .recognition(images: images, similar_images: similar_images)) { response in
+        
+        group.enter()
+        requestManager.recognition(
+            endPoint: .recognition(
+                images: images,
+                similar_images: similar_images
+            )
+        ) { [weak self] response in
+            guard let self else {
+                return
+            }
+            
             switch response {
             case .success(let result):
                 DispatchQueue.main.async {
-                    self.isLoading = false
                     self.model = result
-                    self.showPlantView = true
                 }
                 print(result)
+                group.leave()
             case .failure(let error):
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                }
                 print(error)
+                group.leave()
             }
         }
-        healthAssessmentRequestManager.healthAssessment(endPoint: .healthAssessment(images: images, similar_images: similar_images)) { response in
+        
+        group.enter()
+        healthAssessmentRequestManager.healthAssessment(
+            endPoint: .healthAssessment(
+                images: images,
+                similar_images: similar_images
+            )
+        ) { [weak self] response in
+            guard let self else {
+                return
+            }
                 switch response {
                 case .success(let result):
                     DispatchQueue.main.async {
-                        self.isLoading = false
                         self.model_diagnose = result
                         // Handle showing or processing the health assessment result as needed
                     }
                     print(result)
+                    group.leave()
                 case .failure(let error):
-                    DispatchQueue.main.async {
-                        self.isLoading = false
-                    }
                     print(error)
+                    group.leave()
                 }
             }
         print("model diagnose")
         print(model_diagnose?.result.disease.suggestions[0].name ?? "")
+        
+        group.notify(queue: .main) {
+            self.storeSearchResults(for: image)
+            self.isLoading = false
+            self.showPlantView = true
+        }
+    }
+    
+    private func storeSearchResults(for image: UIImage) {
+        guard let model,
+              let model_diagnose else {
+            return
+        }
+        
+        let entity = RecentSearch(
+            image: image,
+            model_diagnose: model_diagnose,
+            model: model
+        )
+        
+        database.add([entity])
     }
 }

@@ -153,7 +153,7 @@ struct SearchView: View {
         let url = URL(string: "https://plant.id/api/v3/kb/plants/name_search?q=\(encodedPlantName)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("TzmkUH1lVPNVqK7YTNHBk8xER0tL9VquupWB4MK2I1SM3vQB6r", forHTTPHeaderField: "Api-Key")
+        request.setValue("bV3kX21qoaKLx0qWhWFqha3aMmtD6T7sXbB7D78yQ7v92XydEG", forHTTPHeaderField: "Api-Key")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         URLSession.shared.dataTask(with: request) { data, response, error in

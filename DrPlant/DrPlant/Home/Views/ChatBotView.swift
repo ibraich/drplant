@@ -7,6 +7,8 @@ struct ChatMessage: Identifiable {
 }
 
 struct ChatBotView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     var model: IdentificationModel?
     @State private var messages: [ChatMessage] = []
     @State private var userQuestion: String = ""
@@ -77,10 +79,21 @@ struct ChatBotView: View {
                 .padding()
             }
             .navigationBarTitle("Chat with Bot", displayMode: .inline)
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(.black)
+                    })
+                }
+            })
             .onAppear {
                 updateQuestions()
             }
         }
+        .navigationBarBackButtonHidden()
     }
     
     func sendMessage(_ question: String) {
@@ -92,7 +105,7 @@ struct ChatBotView: View {
         let url = URL(string: "https://plant.id/api/v3/identification/\(accessToken)/conversation")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("TzmkUH1lVPNVqK7YTNHBk8xER0tL9VquupWB4MK2I1SM3vQB6r", forHTTPHeaderField: "Api-Key")
+        request.setValue("bV3kX21qoaKLx0qWhWFqha3aMmtD6T7sXbB7D78yQ7v92XydEG", forHTTPHeaderField: "Api-Key")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let body: [String: Any] = [
